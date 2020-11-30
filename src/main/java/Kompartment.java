@@ -5,17 +5,20 @@ public class Kompartment {
     private int producenci;
     private int zapas;
     private int limit;
+    private int cena;
     private int flota;
 
 
     // Konstruktor
-    public Kompartment(int popyt, int producenci, int zapas, int limit, int flota) {
+    public Kompartment(int popyt, int producenci, int zapas, int limit, int cena, int flota) {
         this.popyt = popyt;
         this.producenci = producenci;
         this.zapas = zapas;
         this.limit = limit;
+        this.cena = cena;
         this.flota = flota;
     }
+
 
     // Ta metoda ma rzucić n razy kością sześciościenną (k6) i zwrócić sumę wyników.
     static int rzutK6(int n) {
@@ -28,7 +31,15 @@ public class Kompartment {
     }
 
     // Ta metoda ma zaktualizować zapas poprzez dodanie do niego tegorocznej podazy i odjecie popytu
-    static void zniwa(){
+    public void zniwa() {
+        zapas = zapas + rzutK6(producenci) - popyt;
+        if (zapas < 0) {
+            zapas = 0;
+        }
+        if (zapas > limit) {
+            zapas = limit;
+        }
+        System.out.println(zapas);
     }
 
     // Poniżej są gettery i settery
@@ -65,6 +76,15 @@ public class Kompartment {
         this.limit = limit;
     }
 
+    public int getCena() {
+        return cena;
+    }
+
+    public void setCena(int cena) {
+        this.cena = cena;
+    }
+
+
     public int getFlota() {
         return flota;
     }
@@ -72,7 +92,6 @@ public class Kompartment {
     public void setFlota(int flota) {
         this.flota = flota;
     }
-
 
 
 }
