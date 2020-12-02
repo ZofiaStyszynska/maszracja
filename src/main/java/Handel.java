@@ -15,12 +15,15 @@ public class Handel {
      * */
 
     public static void main(String[] args) {
-        Kompartment a = new Kompartment(10, 3, 10, 20, 10, 1);
-        Kompartment b = new Kompartment(25, 7, 25, 50, 15, 1);
-        Kompartment c = new Kompartment(50, 14, 50, 100, 20, 1);
+        Kompartment a = new Kompartment(10, 3, 10, 20, 10, 1, 'a');
+        Kompartment b = new Kompartment(25, 7, 25, 50, 15, 1, 'b');
+        Kompartment c = new Kompartment(50, 14, 50, 100, 20, 1, 'c');
         a.zniwa();
         b.zniwa();
         c.zniwa();
+        a.kurs();
+        b.kurs();
+        c.kurs();
 
     }
 

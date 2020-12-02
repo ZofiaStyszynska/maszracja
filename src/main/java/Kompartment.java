@@ -7,16 +7,18 @@ public class Kompartment {
     private int limit;
     private int cena;
     private int flota;
+    private char id;
 
 
     // Konstruktor
-    public Kompartment(int popyt, int producenci, int zapas, int limit, int cena, int flota) {
+    public Kompartment(int popyt, int producenci, int zapas, int limit, int cena, int flota, char id) {
         this.popyt = popyt;
         this.producenci = producenci;
         this.zapas = zapas;
         this.limit = limit;
         this.cena = cena;
         this.flota = flota;
+        this.id = id;
     }
 
 
@@ -30,7 +32,7 @@ public class Kompartment {
         return suma;
     }
 
-    // Ta metoda ma zaktualizować zapas poprzez dodanie do niego tegorocznej podazy i odjecie popytu
+    // Ta metoda ma zaktualizować zapas poprzez dodanie do niego tegorocznej podazy i odjecie popytu.
     public void zniwa() {
         zapas = zapas + rzutK6(producenci) - popyt;
         if (zapas < 0) {
@@ -39,7 +41,25 @@ public class Kompartment {
         if (zapas > limit) {
             zapas = limit;
         }
-        System.out.println(zapas);
+    }
+
+    // Ta metoda ma zmienić kurs w zależności od stosunku zapasu do limitu.
+    public void kurs(){
+        int zmianaCeny = 0;
+        int stZapMag = 100 * zapas / limit; // stopień zapełnienia magazynu
+        if      (stZapMag <= 10) zmianaCeny = 5;
+        else if (stZapMag <= 20) zmianaCeny = 4;
+        else if (stZapMag <= 30) zmianaCeny = 3;
+        else if (stZapMag <= 40) zmianaCeny = 2;
+        else if (stZapMag <= 45) zmianaCeny = 1;
+        else if (stZapMag >= 90) zmianaCeny = -5;
+        else if (stZapMag >= 80) zmianaCeny = -4;
+        else if (stZapMag >= 70) zmianaCeny = -3;
+        else if (stZapMag >= 60) zmianaCeny = -2;
+        else if (stZapMag >= 55) zmianaCeny = -1;
+        cena +=zmianaCeny;
+        if (cena<5) cena=5;
+        System.out.println("zapas " + id + " = " + zapas + ", magazyny zap. w " + stZapMag + "%, cena = " + cena);
     }
 
     // Poniżej są gettery i settery

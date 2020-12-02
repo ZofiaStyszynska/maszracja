@@ -1,7 +1,7 @@
 public class Mapa {
 
-    private static final int COLS = 6;
-    private static final int ROWS = 5;
+    private static final int COLS = 10;
+    private static final int ROWS = 9;
 
     public static void draw1stLine(int cols) {
         System.out.print("       *****");
